@@ -81,6 +81,7 @@ const Login = () => {
   };
 
   return (
+    <S.LoginContainer>
     <S.Container>
       <S.SignUpContainer signinIn={signIn}>
         <S.Form onSubmit={signUpForm.handleSubmit(onSignUp)} autoComplete="off">
@@ -189,6 +190,7 @@ const Login = () => {
         </S.Overlay>
       </S.OverlayContainer>
     </S.Container>
+    </S.LoginContainer>
   );
 };
 

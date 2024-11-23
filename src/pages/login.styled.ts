@@ -4,8 +4,24 @@ interface SignInProps {
   signinIn: boolean;
 }
 
+export const LoginContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: url("https://wallpapercave.com/wp/wp3703406.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  @media (max-width: 768px) {
+    background-position: center center; /* Adjust background position on smaller screens */
+  }
+`;
+
 export const Container = styled.div`
-  background-color: #fff;
+  background-color: #0f0f0f;
   opacity: 0.88;
   border-radius: 15px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -14,6 +30,10 @@ export const Container = styled.div`
   width: 700px;
   max-width: 100%;
   min-height: 450px;
+  @media (max-width: 768px) {
+    width: 90%; /* Take 90% of screen width on smaller devices */
+    min-height: 400px;
+  }
 `;
 
 export const SignUpContainer = styled.div<SignInProps>`
@@ -27,12 +47,14 @@ export const SignUpContainer = styled.div<SignInProps>`
   z-index: 1;
   ${(props) =>
     props.signinIn !== true
-      ? `
-   transform: translateX(100%);
-   opacity: 1;
-   z-index: 5;
- `
+      ? `transform: translateX(100%); opacity: 1; z-index: 5;`
       : null}
+  @media (max-width: 768px) {
+    width: 100%; /* Stack full width on small screens */
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 5;
+  }
 `;
 
 export const SignInContainer = styled.div<SignInProps>`
@@ -45,6 +67,10 @@ export const SignInContainer = styled.div<SignInProps>`
   z-index: 2;
   ${(props) =>
     props.signinIn !== true ? `transform: translateX(100%);` : null}
+  @media (max-width: 768px) {
+    width: 100%; /* Stack full width on small screens */
+    transform: translateX(0);
+  }
 `;
 
 export const Form = styled.form`
@@ -56,11 +82,17 @@ export const Form = styled.form`
   padding: 0 50px;
   height: 100%;
   text-align: center;
+  @media (max-width: 768px) {
+    padding: 0 20px; /* Less padding on smaller screens */
+  }
 `;
 
 export const Title = styled.h1`
   font-weight: bold;
   margin: 0;
+  @media (max-width: 768px) {
+    font-size: 1.5rem; /* Smaller font size on smaller screens */
+  }
 `;
 
 export const Input = styled.input`
@@ -69,6 +101,9 @@ export const Input = styled.input`
   padding: 12px 15px;
   margin: 8px 0;
   width: 100%;
+  @media (max-width: 768px) {
+    padding: 10px; /* Adjust padding on small screens */
+  }
 `;
 
 export const Button = styled.button`
@@ -88,7 +123,11 @@ export const Button = styled.button`
   &:focus {
     outline: none;
   }
+  @media (max-width: 768px) {
+    padding: 12px 30px; /* Adjust button padding on smaller screens */
+  }
 `;
+
 export const GhostButton = styled(Button)`
   background-color: transparent;
   border-color: #ffffff;
@@ -99,7 +138,11 @@ export const Anchor = styled.a`
   font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
+  @media (max-width: 768px) {
+    font-size: 12px; /* Smaller font size on smaller screens */
+  }
 `;
+
 export const OverlayContainer = styled.div<SignInProps>`
   position: absolute;
   top: 0;
@@ -111,6 +154,11 @@ export const OverlayContainer = styled.div<SignInProps>`
   z-index: 100;
   ${(props) =>
     props.signinIn !== true ? `transform: translateX(-100%);` : null}
+  @media (max-width: 768px) {
+    left: 0;
+    width: 100%; /* Make the overlay take up full width on smaller screens */
+    transform: translateX(0);
+  }
 `;
 
 export const Overlay = styled.div<SignInProps>`
@@ -128,6 +176,11 @@ export const Overlay = styled.div<SignInProps>`
   transform: translateX(0);
   transition: transform 0.6s ease-in-out;
   ${(props) => (props.signinIn !== true ? `transform: translateX(50%);` : null)}
+  @media (max-width: 768px) {
+    left: 0;
+    width: 100%; /* Make the overlay take up full width on smaller screens */
+    transform: translateX(0);
+  }
 `;
 
 export const OverlayPanel = styled.div`
@@ -143,17 +196,27 @@ export const OverlayPanel = styled.div`
   width: 50%;
   transform: translateX(0);
   transition: transform 0.6s ease-in-out;
+  @media (max-width: 768px) {
+    width: 100%; /* Make panel take up full width on small screens */
+    padding: 0 20px; /* Less padding */
+  }
 `;
 
 export const LeftOverlayPanel = styled(OverlayPanel)<SignInProps>`
   transform: translateX(-20%);
   ${(props) => (props.signinIn !== true ? `transform: translateX(0);` : null)}
+  @media (max-width: 768px) {
+    transform: translateX(0); /* Reset for small screens */
+  }
 `;
 
 export const RightOverlayPanel = styled(OverlayPanel)<SignInProps>`
   right: 0;
   transform: translateX(0);
   ${(props) => (props.signinIn !== true ? `transform: translateX(20%);` : null)}
+  @media (max-width: 768px) {
+    transform: translateX(0); /* Reset for small screens */
+  }
 `;
 
 export const Paragraph = styled.p`
@@ -162,6 +225,9 @@ export const Paragraph = styled.p`
   line-height: 20px;
   letter-spacing: 0.5px;
   margin: 20px 0 30px;
+  @media (max-width: 768px) {
+    font-size: 12px; /* Smaller font size */
+  }
 `;
 
 export const ErrorMessage = styled.span`
@@ -169,3 +235,4 @@ export const ErrorMessage = styled.span`
   font-size: 12px;
   margin: 5px 0;
 `;
+
